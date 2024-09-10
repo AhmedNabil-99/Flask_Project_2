@@ -7,7 +7,7 @@
         <div class="container py-5">
              <h2>{{ 'Edit Book' if book else 'Add New Book' }}</h2>
 
-             <form method="POST" enctype="multipart/form-data" action="{{ url_for('books.create') if not book else url_for('books.edit_book', id=book.id) }}">
+             <form method="POST" enctype="multipart/form-data" action="{{ url_for('books.create') if not book else url_for('books.books_edit', id=book.id) }}">
                 {{ form.hidden_tag() }}
             
                 <!-- Book Title -->
