@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_migrate import Migrate
-from flask_restful import Resource
 from app.models import db
 from app.config import config_options
 

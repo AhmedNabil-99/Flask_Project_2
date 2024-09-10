@@ -22,7 +22,7 @@ def books_create():
         image_filename = secure_filename(form.image.data.filename) if form.image.data else "default_image.png"
         print(image_filename)
         if form.image.data:
-            form.image.data.save(os.path.join('static/images', image_filename))
+            form.image.data.save(os.path.join('app/static/images', image_filename))
 
         book = Books(
             title=form.title.data,
@@ -50,7 +50,7 @@ def books_edit(id):
 
         if form.image.data:
             image_filename = secure_filename(form.image.data.filename)
-            form.image.data.save(os.path.join('static/images', image_filename))
+            form.image.data.save(os.path.join('app/static/images', image_filename))
             book.image = image_filename
 
         db.session.commit() 
