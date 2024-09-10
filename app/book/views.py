@@ -22,7 +22,7 @@ def books_create():
         image_filename = secure_filename(form.image.data.filename) if form.image.data else "default_image.png"
         print(image_filename)
         if form.image.data:
-            form.image.data.save(os.path.join('app/static/images', image_filename))
+            form.image.data.save(os.path.join('static/images', image_filename))
 
         book = Books(
             title=form.title.data,
@@ -38,7 +38,7 @@ def books_create():
     return render_template('books/create.html', form=form)
 
 
-@books_blueprint.route('/<int:id>/edit', methods=['GET', 'POST'])
+@books_blueprint.route('/edit/<int:id>', methods=['GET', 'POST'])
 def books_edit(id):
     book = Books.query.get_or_404(id)
     form = BooksForm()
@@ -50,7 +50,7 @@ def books_edit(id):
 
         if form.image.data:
             image_filename = secure_filename(form.image.data.filename)
-            form.image.data.save(os.path.join('app/static/images', image_filename))
+            form.image.data.save(os.path.join('static/images', image_filename))
             book.image = image_filename
 
         db.session.commit() 
@@ -65,7 +65,7 @@ def books_edit(id):
     return render_template('books/create.html', form=form, book=book)
 
 
-@books_blueprint.route("<int:id>/show", endpoint="show")
+@books_blueprint.route("/show/<int:id>", endpoint="show")
 def book_show(id):
     book = db.get_or_404(Books, id)
     return render_template("books/show.html", book=book)

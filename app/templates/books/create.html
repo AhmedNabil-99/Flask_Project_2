@@ -10,31 +10,26 @@
              <form method="POST" enctype="multipart/form-data" action="{{ url_for('books.create') if not book else url_for('books.books_edit', id=book.id) }}">
                 {{ form.hidden_tag() }}
             
-                <!-- Book Title -->
                 <div class="mb-3">
                     <label for="title" class="form-label">Book Title</label>
                     {{ form.title(class="form-control") }}
                 </div>
             
-                <!-- Book Description -->
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
                     {{ form.description(class="form-control") }}
                 </div>
             
-                <!-- Book Pages -->
                 <div class="mb-3">
                     <label for="pages" class="form-label">Number of Pages</label>
                     {{ form.pages(class="form-control") }}
                 </div>
             
-                <!-- Book Image -->
                 <div class="mb-3">
                     <label for="image" class="form-label">Cover Photo</label>
                     {{ form.image(class="form-control") }}
                 </div>
             
-                <!-- Submit Button -->
                 <button type="submit" class="btn btn-primary">{{ 'Add Book' if not book else 'Save Changes' }}</button>
             </form>
             
