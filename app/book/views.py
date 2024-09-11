@@ -38,7 +38,7 @@ def books_create():
     return render_template('books/create.html', form=form)
 
 
-@books_blueprint.route('/edit/<int:id>', methods=['GET', 'POST'])
+@books_blueprint.route('/edit/<int:id>', endpoint="edit", methods=['GET', 'POST'])
 def books_edit(id):
     book = Books.query.get_or_404(id)
     form = BooksForm()
